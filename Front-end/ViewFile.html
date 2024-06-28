@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="View.css">
+</head>
+<header>
+    <div style="margin-left: 25%;font-size: 200%;margin-top: 2%;display:flex;">Customer recods</div>
+</header>
+<a href="Registration.html">Add Customer</a>
+
+<body>
+    <div id="main">
+        <table>
+            <div class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date Of Birth</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
+                        <th>Gender</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="customer-table-body">
+                </tbody>
+            </div>
+        </table>
+        <div id="customer-form-modal" style="display:none;">
+            <form id="customerid" class="form" name="customerid" method="post"
+                action="http://localhost:8080/api/v1/createcustomer">
+                <section class="container">
+                    <header>Updated Records</header>
+                    <input type="hidden" id="customerid">
+                    <div class="flex-container">
+                        <div class="input-box">
+                            <label class="required">*</label>FirstName :
+                            <input type="text" name="firstName" id="firstName" placeholder="Enter your first name"
+                                style="margin-left: 9%;" onkeyup="checkFormCompletion()" />
+                            <span id="first-name-error" class="error-message"></span>
+                        </div>
+                        <div class="input-box">
+                            <label class="required">*</label>LastName :
+                            <input type="text" id="lastName" placeholder="Enter your last name"
+                                style="margin-left: 10%;" onkeyup="checkFormCompletion()" />
+                            <span id="last-name-error" class="error-message"></span>
+                        </div>
+                        <div class="input-box">
+                            <label class="required">*</label>Mobile :
+                            <input type="text" name="mobile" id="mobile" maxlength="10" placeholder="Enter your mobile"
+                                style="margin-left: 16%;" onkeyup="checkFormCompletion()"
+                                oninput="checkMobileExistence()" />
+                            <span id="mobile-error" class="error-message"></span>
+                        </div>
+                        <div class="input-box">
+                            <label class="required">*</label>Email :
+                            <input type="email" name="email" id="email" placeholder="Enter your Email"
+                                style="margin-left: 18%;" onkeyup="checkFormCompletion()"
+                                oninput="checkEmailExistence()" />
+                            <span id="email-error" class="error-message"></span>
+                        </div>
+                        <div class="input-box">
+                            <label class="required">*</label>Date Of Birth :
+                            <input type="date" id="dateOfBirth" placeholder="Enter your Date Of Birth" id="txtDate"
+                                style="margin-left: 5.3%;" onchange="calculateAge()" onkeyup="dateOfBirthValidation()"
+                                oninput="ageValidation()" />
+                            <span id="dateOfBirth-error" class="error-message"></span>
+                        </div>
+                        <div class="input-box">
+                            <label class="required">*</label>Age :
+                            <input type="text" name="age" id="age" placeholder="Enter your age"
+                                style="margin-left: 20.5%;" readonly />
+                            <span id="age-error" class="error-message"></span>
+                        </div>
+                        <div class="input-box">
+                            <label class="required">*</label>Address 1 :
+                            <input type="text" name="address1" id="address1" placeholder="Enter your Address1"
+                                style="margin-left: 11%;" onkeyup="checkFormCompletion()" />
+                            <span id="address1-error" class="error-message"></span>
+                        </div>
+                        <div class="input-box">
+                            <label class="required">*</label>Address 2 :
+                            <input type="text" name="address2" id="address2" placeholder="Enter your Address2"
+                                style="margin-left: 10%;" onkeyup="checkFormCompletion()" />
+                            <span id="address2-error" class="error-message"></span>
+                        </div>
+                        <div class="gender-box" id="genderV">
+                            <div class="gender-option">
+                                <label class="required">*</label>Gender :
+                                <div class="gender">
+                                    <input type="radio" id="Male" name="gender" value="Male"
+                                        onkeyup="checkFormCompletion()" />
+                                    <label for="check-Male">Male</label>
+                                </div>
+                                <div class="gender">
+                                    <input type="radio" id="Female" name="gender" value="Female"
+                                        onkeyup="checkFormCompletion()" />
+                                    <label for="check-Female">Female</label>
+                                </div>
+                                <div class="gender">
+                                    <input type="radio" id="Other" name="gender" value="Other"
+                                        onkeyup="checkFormCompletion()" />
+                                    <label for="check-Other">Other</label>
+                                </div>
+                                <span id="gender-error" class="error-message"></span>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button type="submit" class="submit-button" id="submitButton"
+                            style="display: none;border: 2px solid rgb(129, 125, 125); text-align: center;color: antiquewhite;padding: 3px;
+                            background-color: black;;padding: 4px;font-size: 17px;margin-top: 2px;border-radius: 6px;width: 60%;"
+                            onclick="saveCustomer();window.location.href='ViewFile.html'">Update</button>
+
+                            <button type="button" class="cancel-button" onclick="window.location.reload()"
+                            style="border: 2px solid rgb(129, 125, 125); text-align: center;color: antiquewhite;padding: 3px;
+                            background-color: black;width: 15%;padding: 4px;font-size: 17px;margin-top: 2px;border-radius: 6px;width: 60%;"
+                            onclick="closeCustomerForm()">Cancel</button>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </div>
+</body>
+<script src="View.js"></script>`
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Registration.css">
+</head>
+<body>
+    <section class="container">
+        <header>Registration Form</header>
+        <form id="customer-id" class="form" method="post" action="http://localhost:8080/api/v1/createcustomer">
+            <input type="hidden" id="customer-id">
+            <div class="flex-container">
+                <div class="input-box">
+                    <label class="required">*</label>FirstName :
+                    <input type="text" name="firstName" id="firstName" placeholder="Enter your first name"
+                        onkeyup="checkFormCompletion()" />
+                    <span id="first-name-error" class="error-message"></span>
+                </div>
+                <div class="input-box">
+                    <label class="required">*</label>LastName :
+                    <input type="text" id="lastName" placeholder="Enter your last name"
+                        onkeyup="checkFormCompletion()" />
+                    <span id="last-name-error" class="error-message"></span>
+                </div>
+                <div class="input-box">
+                    <label class="required">*</label>Mobile :
+                    <input type="text" name="mobile" id="mobile" maxlength="10" placeholder="Enter your mobile"
+                        onkeyup="checkFormCompletion()" />
+                    <span id="mobile-error" class="error-message"></span>
+                </div>
+                <div class="input-box">
+                    <label class="required">*</label>Email :
+                    <input type="email" name="email" id="email" placeholder="Enter your Email"
+                        onkeyup="checkFormCompletion()" />
+                    <span id="email-error" class="error-message"></span>
+                </div>
+                <div class="input-box">
+                    <label class="required">*</label>Date Of Birth :
+                    <input type="date" name="dateOfBirth" id="dateOfBirth" placeholder="Enter your Date Of Birth"
+                        onchange="calculateAge()" onkeyup="checkFormCompletion()" oninput="ageValidation()" />
+                    <span id="dateOfBirth-error" class="error-message"></span>
+                </div>
+                <div class="input-box">
+                    <label class="required">*</label>Age :
+                    <input type="text" name="age" id="age" placeholder="Age will be calculated automatically"
+                        readonly />
+                    <span id="age-error" class="error-message"></span>
+                </div>
+                <div class="input-box">
+                    <label class="required">*</label>Address 1 :
+                    <input type="text" name="address1" id="address1" placeholder="Enter your Address1"
+                        onkeyup="checkFormCompletion()" />
+                    <span id="address1-error" class="error-message"></span>
+                </div>
+                <div class="input-box">
+                    <label class="required">*</label>Address 2 :
+                    <input type="text" name="address2" id="address2" placeholder="Enter your Address2"
+                        onkeyup="checkFormCompletion()" />
+                    <span id="address2-error" class="error-message"></span>
+                </div>
+                <div class="gender-box">
+                    <label class="required">*</label>Gender :
+                    <div class="gender-option">
+                        <div class="gender">
+                            <input type="radio" id="male" name="gender" value="Male" onkeyup="checkFormCompletion()" />
+                            <label for="check-male">Male</label>
+                        </div>
+                        <div class="gender">
+                            <input type="radio" id="female" name="gender" value="Female"
+                                onkeyup="checkFormCompletion()" />
+                            <label for="check-female">Female</label>
+                        </div>
+                        <div class="gender">
+                            <input type="radio" id="other" name="gender" value="Other"
+                                onkeyup="checkFormCompletion()" />
+                            <label for="check-other">Other</label>
+                        </div>
+                    </div>
+                    <span id="gender-error" class="error-message"></span>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="submit-button" id="submitButton"
+                        style="display: none;border: 2px solid rgb(129, 125, 125); text-align: center;color: antiquewhite;padding: 3px;
+                        background-color: black;width: 50%;padding:5px;font-size: 17px;margin-top: 2px;border-radius: 6px;"
+                        onclick="addCustomer();window.location.href='ViewFile.html'">Save</button>
+                    <button type="reset" id="refresh" onclick="window.location.reload()" style="border: 2px solid rgb(129, 125, 125); text-align: center;color: antiquewhite;padding: 3px;
+                  background-color: black;padding: 5px;font-size: 17px;border-radius: 6px;width:50%;">Cancel</button>
+                    <button type="button" onclick="location.href='ViewFile.html'" style="border: 2px solid rgb(129, 125, 125); text-align: center;color: antiquewhite;padding: 3px;
+              background-color: black;padding: 5px;font-size: 17px;border-radius: 6px;width:50%;">View</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+<script src="Registration.js"></script>
+</html>
